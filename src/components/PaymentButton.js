@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addOrder, addPaymentResult, selectPaymentMethods, selectShihppingAddress } from "../redux/reducers/orderSlice";
 import { selectCartitems, selectTotal, } from "../redux/reducers/cartSlice";
 import { useNavigate } from "react-router-dom";
-import Message from "./Message";
 // --------------------------------------------------------------------
 
 const ID = "AcdIue6OSWJoAFIRAmsyu4fkXqYSqY7VtLOuaGqfxq2yRrczxaDMXKLT8KGpP5D2-2_Rh-xVV54Eg3lj"
@@ -133,9 +132,7 @@ const PaymentButton = () => {
         createOrder={createOrder}
         onApprove={onApprove}
       />
-      {alertVariant && (
-        <Message messageText={alertMessage} variant={alertVariant} />
-      )}
+
     </PayPalScriptProvider>
 
   )
