@@ -5,10 +5,9 @@ import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from 'react-bootstrap';
 import ProductCard from '../ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts, selectProducts, selectLoading, selectError, getCategoriesNames, fetchProductsByCategory, getBrandsNames, fetchProductsByBrand, fetchLatestProducts } from '../../redux/reducers/productsSlice';
+import { selectError, getCategoriesNames, fetchProductsByCategory, getBrandsNames, fetchProductsByBrand, fetchLatestProducts } from '../../redux/reducers/productsSlice';
 import { PageNameContext } from '../../App';
 import CardSketlon from '../CardSketlon';
-import { setLoading } from '../../redux/reducers/userSlice';
 
 // -------------------------------------------------------------------------------------
 
@@ -16,8 +15,8 @@ const LatestProductsPage = () => {
 
     const error = useSelector(selectError);
     const dispatch = useDispatch();
-    
-    const [loading, setLoading] = useState(true) ;
+
+    const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState(null);
     const [catOptions, setCatOptions] = useState(null);
     const [brandOptions, setBrandOptions] = useState(null);
@@ -35,7 +34,6 @@ const LatestProductsPage = () => {
         dispatch(getCategoriesNames()).then((res) => setCatOptions(res));
         dispatch(getBrandsNames()).then((res) => setBrandOptions(res));
 
-        console.log(products);
 
 
     }, [dispatch]);
@@ -56,7 +54,6 @@ const LatestProductsPage = () => {
                             labelKey="name"
                             placeholder='Category'
                             options={catOptions ? catOptions : null}
-                            // selected={selectedOption}
                             onChange={(selected) => {
                                 dispatch(fetchProductsByCategory(selected[0]))
 

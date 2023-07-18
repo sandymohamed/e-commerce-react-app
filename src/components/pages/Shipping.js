@@ -6,10 +6,10 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate, } from 'react-router-dom';
 import { Form, Button, Breadcrumb, Container } from 'react-bootstrap';
 import { TiWarningOutline } from 'react-icons/ti';
-import '../../App.scss';
+import { addShippingAddress, selectError, selectLoading } from '../../redux/reducers/orderSlice';
 import Message from '../Message';
-import { addShippingAddress, selectError, selectLoading, selectShihppingAddress } from '../../redux/reducers/orderSlice';
 import StepsHeader from '../StepsHeader';
+import '../../App.scss';
 
 // --------------------------------------------------------------------
 const schema = yup.object().shape({

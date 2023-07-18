@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect } from 'react';
 import './App.scss';
 import Routes from './components/pages/Routes';
 import { getCartDetails } from './redux/reducers/cartSlice';

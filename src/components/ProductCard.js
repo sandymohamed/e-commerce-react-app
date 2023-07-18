@@ -9,15 +9,6 @@ import DynamicImage from './DynamicImage';
 import '../App.scss';
 // --------------------------------------------------------------------
 
-const StyledCard = styled.div`
-
-background-color: white;
-border:none;
-border-radius: 10px;
-box-shadow:  -.6rem .6rem .6rem rgba(0, 0, 0, 0.4);
-
-`;
-
 const StyledBody = styled.div`
 height: 10%; width:100%;
 

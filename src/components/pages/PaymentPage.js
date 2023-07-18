@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
-import { Form, Button, Col, Row, Container, Card, Breadcrumb } from 'react-bootstrap';
-import PaymentButton from '../PaymentButton';
-import '../../App.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { addOrder, orderSlice, selectPaymentMethods, selectShihppingAddress, } from '../../redux/reducers/orderSlice';
 import { Link, useNavigate } from 'react-router-dom';
+import { Form, Button, Col, Row, Container, Card, Breadcrumb } from 'react-bootstrap';
+import { selectCartitems, selectTotal } from '../../redux/reducers/cartSlice';
+import { addOrder, orderSlice, selectShihppingAddress, } from '../../redux/reducers/orderSlice';
 import StepsHeader from '../StepsHeader';
-import { removeCart, selectCartitems, selectTotal } from '../../redux/reducers/cartSlice';
+import '../../App.scss';
 // --------------------------------------------------------------------
 
 const schema = yup.object().shape({
@@ -23,7 +21,7 @@ const PaymentForm = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  
+
   const { setPaymentMethods } = orderSlice.actions;
 
   const products = useSelector(selectCartitems);
@@ -47,7 +45,7 @@ const PaymentForm = () => {
 
 
     const order = {
-      products: [ ...products] ,
+      products: [...products],
       shippingAddress: { ...shihppingAddress },
       paymentMethods: data.paymentOption,
       totalPrice: totalPrice,
@@ -63,7 +61,6 @@ const PaymentForm = () => {
     if (data.paymentOption === 'cash') {
 
       dispatch(addOrder(order));
-      // dispatch(removeCart());
 
       navigate('/orders')
     } else {
@@ -99,7 +96,7 @@ const PaymentForm = () => {
 
 
             <Form onSubmit={handleSubmit(onSubmit)} className='mb-5 text-light'>
-               <Row>
+              <Row>
 
                 <Col sm={10}>
                   <Form.Group>

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { addItem, selectTotalQuantity, selectTotal, removeCart, selectCartitems, removeItemFromCart, getCartDetails } from '../../redux/reducers/cartSlice';
 import { PageNameContext } from '../../App';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
@@ -13,15 +12,7 @@ import StepsHeader from '../StepsHeader';
 import CardSketlon from '../CardSketlon';
 import DynamicImage from '../DynamicImage';
 
-// -------------------------------------------------------------------------------------
-const StyledCard = styled.div`
-background-color: white;
-padding-bottom: '.5rem';
-border:none;
-border-radius: 10px;
-box-shadow:  -.6rem .6rem .6rem rgba(0, 0, 0, 0.4);
 
-`
 // -------------------------------------------------------------------------------------
 const CartPage = () => {
 

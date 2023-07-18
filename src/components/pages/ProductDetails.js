@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import {  useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
@@ -35,7 +35,7 @@ const ProductDetails = () => {
   const [reviews, setReviews] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { pageName, setPageName } = useContext(PageNameContext);
+  const { setPageName } = useContext(PageNameContext);
 
 
   const [alertVariant, setAlertVariant] = useState(null);
