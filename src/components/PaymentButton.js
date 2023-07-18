@@ -5,8 +5,9 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder, addPaymentResult, selectPaymentMethods, selectShihppingAddress } from "../redux/reducers/orderSlice";
-import {  selectCartitems, selectTotal, } from "../redux/reducers/cartSlice";
+import { selectCartitems, selectTotal, } from "../redux/reducers/cartSlice";
 import { useNavigate } from "react-router-dom";
+import Message from "./Message";
 // --------------------------------------------------------------------
 
 const ID = "AcdIue6OSWJoAFIRAmsyu4fkXqYSqY7VtLOuaGqfxq2yRrczxaDMXKLT8KGpP5D2-2_Rh-xVV54Eg3lj"
@@ -27,6 +28,7 @@ const PaymentButton = () => {
   const shihppingAddress = useSelector(selectShihppingAddress);
 
 
+  const [succeeded, setSucceeded] = useState(false);
   const [paypalErrorMessage, setPaypalErrorMessage] = useState("");
   const [orderID, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState({});
@@ -34,6 +36,14 @@ const PaymentButton = () => {
 
 
 
+
+  const [alertVariant, setAlertVariant] = useState(null);
+  const [alertMessage, setAlertMessage] = useState('');
+
+  const showMessage = (message, variant) => {
+    setAlertVariant(variant);
+    setAlertMessage(message);
+  };
 
   const createOrder = (data, actions) => {
     if (totalPrice > 0) {
@@ -89,12 +99,14 @@ const PaymentButton = () => {
 
         const { payer } = details;
         setBillingDetails(payer);
+        setSucceeded(true);
 
 
         return dispatch(addPaymentResult(payer))
           .then((res) => {
             showMessage('Profile Updated Successfully✔', 'warning');
             dispatch(addOrder(order));
+            //  dispatch(removeCart());
 
           })
           .catch((error) => {
@@ -121,7 +133,9 @@ const PaymentButton = () => {
         createOrder={createOrder}
         onApprove={onApprove}
       />
-
+      {alertVariant && (
+        <Message messageText={alertMessage} variant={alertVariant} />
+      )}
     </PayPalScriptProvider>
 
   )
