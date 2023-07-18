@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+$darkBox: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+$darkerBox: -.6rem .4rem .6rem rgba(0, 0, 0, 0.4);
+$Coloryellow: #E78A00;
+
+
+/* General Styles */
+body {
+  font-family: 'Righteous', cursive;
+  letter-spacing: .1rem;
+  // font-family: 'Poppins', sans-serif;
+
+}
+
+.total-price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.digit {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.digit.animateup {
+  animation: moveUp 0.3s;
+}
+
+.height-50 {
+  height: 50vh;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.circle {
+  height: 5vh;
+  width: 5%;
+}
+
+.product-card-img {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-50%);
+    opacity: .5;
+  }
+
+  50% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  75% {
+    transform: translateY(-50%);
+    opacity: .5;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.MainLayout {
+  background-color: #474747;
+
+}
+
+.yellow-text {
+  color: $Coloryellow;
+}
+
+.poppins-text {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.bg-orange {
+  background-color: $Coloryellow;
+
+}
+
+.bg-orange-hover {
+
+  &:hover {
+    background-color: #bb7307;
+  }
+
+}
+
+.box-border {
+  border: none;
+  border-radius: 10px;
+  box-shadow: -.6rem .6rem .6rem rgba(0, 0, 0, 0.4);
+}
+
+.card-box-border {
+  border: none;
+  border-radius: 10px;
+  box-shadow: -.6rem .6rem .6rem .6rem rgba(0, 0, 0, 0.4);
+}
+
+
+.cart-card {
+  background-color: #6c6969;
+}
+
+
+.buttons {
+  background-color: $Coloryellow;
+  box-shadow: 0 0 0 0.05rem #bb7307;
+ font-family: 'Poppins', sans-serif;
+  color: #fff;
+  margin-bottom: .2rem;
+  border: none;
+
+  &:hover {
+    background-color: #bb7307;
+  }
+}
+
+.count-btn {
+  width: 37%;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+  font: bold;
+  color: #fbf9f9;
+
+}
+
+
+
+.form-control {
+  border: none;
+}
+
+.form-control:focus {
+  border: 1px solid #bb7307 !important;
+  box-shadow: 0 0 0 0.1rem #bb7307 !important;
+}
+
+.form-control-error:focus {
+  border: 1px solid #a31010 !important;
+  box-shadow: 0 0 0 0.1rem #ea0e21 !important;
+}
+
+.user-avatar {
+  width: 3rem;
+  height: 3.4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-nav-dropdown>a.dropdown-toggle::after {
+  display: none;
+}
+
+.row-data {
+  font-size: 1.4rem;
+  line-height: 2.4;
+  text-align: left;
+
+
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #fff !important;
+  background-color: #bb7307;
+  border-color: #8b5607;
+}
+
+.nav-tabs {
+  border-color: #8b5607;
+}
+
+.nav-tabs .nav-link:hover {
+  color: gray
+}
+
+
+.App {
+  text-align: center;
+  z-index: 0;
+
+  .boxShadow {
+    border: none;
+    box-shadow: $darkerBox;
+  }
+
+
+
+  .active-text {
+    background-color: $Coloryellow;
+
+  }
+
+
+
+  /* main.scss */
+  [title] {
+    background-color: #c50d0d;
+    border: 5px solid #ccc;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: $darkerBox;
+  }
+
+  .parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: .7vh;
+
+    .headTitle {
+      text-align: start;
+      margin: .5rem;
+      color: #f7f0eb;
+    }
+
+
+  }
+
+  .MainLayout {
+
+    .header {
+      margin: 0;
+      background-color: $Coloryellow;
+      overflow: hidden;
+      z-index: 9;
+
+    }
+  }
+
+  .img-container {
+    height: 30vh;
+    box-shadow: $darkerBox;
+  }
+
+
+}
+
+@media (max-width: 860px) {
+  .card-image {
+    width: 90%;
+    margin-right: 2rem;
+  }
+
+  .card-text-start {
+    margin-left: 2.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-image {
+    width: 100%;
+    margin: 0;
+  }
+
+}
