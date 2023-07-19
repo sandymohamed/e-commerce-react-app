@@ -155,7 +155,7 @@ const ProductDetails = () => {
       <Container className='text-light p-2'>
         <Row className="text-start boxShadow bg-dark rounded mt-3 p-4">
           <Col xs={11} sm={5} className="m-0  p-0 ">
-            <DynamicImage image={product.image} alt={product.name} className="rounded card-image" />
+            <DynamicImage image={product.image} alt={product.name} className="rounded card-image w-75" />
           </Col>
           <Col sm={6} className='card-text-start '>
             <h3>{product.name}</h3>
