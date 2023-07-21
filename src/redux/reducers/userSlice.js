@@ -14,6 +14,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
+      console.log('lllllllllllllllll',state);
       state.user = action.payload;
       state.loading = false;
       state.error = null;
@@ -154,6 +155,6 @@ export const fetchUserData = () => async dispatch => {
 
 };
 
-export const selectUser = state => state.user.user;
+export const selectUser = state => state?.user?.user;
 export const selectLoading = state => state.user.loading;
 export const selectError = state => state.user.error;

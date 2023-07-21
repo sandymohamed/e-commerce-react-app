@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import {store} from './redux/store'
-import './index.css';
+import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
+import { productsSlice } from './redux/reducers/productsSlice';
+import { cartSlice } from './redux/reducers/cartSlice';
+import { store } from './redux/store';
+
 // -------------------------------------------------------------------------------------
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

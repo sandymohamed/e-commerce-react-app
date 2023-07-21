@@ -1,26 +1,25 @@
 {
-  "homepage": "https://github.com/sandymohamed/e-commerce-react-app/settings",
   "name": "my-app",
-  "proxy": "http://127.0.0.1:5000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@hookform/resolvers": "^3.1.0",
-    "@paypal/react-paypal-js": "^7.8.3",
+    "@hookform/resolvers": "^3.1.1",
+    "@paypal/react-paypal-js": "^8.1.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.2",
+    "i": "^0.3.7",
+    "npm": "^9.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-bootstrap-typeahead": "^6.2.3",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^7.44.2",
+    "react-hook-form": "^7.45.2",
     "react-icons": "^4.8.0",
-    "react-paypal-button-v2": "^2.6.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
@@ -35,9 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +55,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0",
     "node-sass": "^8.0.0"
   }
 }

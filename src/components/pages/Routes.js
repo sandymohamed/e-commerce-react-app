@@ -93,7 +93,8 @@ const router = (isAuth) => createBrowserRouter([
 const Routes = () => {
 
   const user = useSelector(selectUser);
-  const isAuth = Object.keys(user).length === 0 ? false : true;
+  const isAuth = 1 === 0 ? false : true;
+  //  Object?.keys(user)?.length === 0 ? false : true;
 
 
   return (
