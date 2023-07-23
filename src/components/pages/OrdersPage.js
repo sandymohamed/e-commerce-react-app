@@ -5,6 +5,7 @@ import { deleteOrder, getOrders, selectOrder } from '../../redux/reducers/orderS
 import { useDispatch, useSelector } from 'react-redux'
 import CardSketlon from '../CardSketlon'
 import { PageNameContext } from '../../App';
+import DynamicImage from '../DynamicImage'
 // --------------------------------------------------------------------
 
 const OrdersPage = () => {
@@ -80,7 +81,9 @@ const OrdersPage = () => {
                                                     <Card className=' m-2 box-border cart-card ' style={{ height: '32vh' }}>
 
                                                         <Link to={`/product/${item._id}`} className='h-50 rounded' >
-                                                            <Card.Img variant="top" src={item.image} className='h-100 rounded' />
+                                                            {/* <Card.Img variant="top" src={item.image} className='h-100 rounded' /> */}
+                                                            <DynamicImage image={item.image} alt={item.name} className='w-100 h-100 rounded'/>
+
                                                         </Link>
 
                                                         <Card.Body className=' '>
