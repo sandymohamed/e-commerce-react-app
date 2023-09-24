@@ -2,7 +2,7 @@ import React from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
 const Rating = ({ value, text }) => {
-    
+
   const fullStars = Math.floor(value);
   const hasHalfStar = value - fullStars >= 0.5;
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
@@ -14,8 +14,8 @@ const Rating = ({ value, text }) => {
       ))}
 
       {hasHalfStar &&
-       <FaStarHalfAlt color="#ffc107" />
-       }
+        <FaStarHalfAlt color="#ffc107" />
+      }
 
       {[...Array(emptyStars)].map((_, index) => (
         <FaStar key={index + fullStars + 1} color="#c4c4c4" />

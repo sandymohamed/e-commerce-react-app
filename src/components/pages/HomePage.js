@@ -20,14 +20,14 @@ const HomePage = () => {
   const error = useSelector(selectError);
   const dispatch = useDispatch();
 
-  const { pageName, setPageName } = useContext(PageNameContext)
+  const { setPageName } = useContext(PageNameContext)
 
 
   useEffect(() => {
     dispatch(fetchProducts());
 
     setPageName('Home')
-  }, [dispatch]);
+  }, [dispatch, setPageName]);
 
 
   return (

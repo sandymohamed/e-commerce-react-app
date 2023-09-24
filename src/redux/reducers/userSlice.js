@@ -14,7 +14,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
-      console.log('lllllllllllllllll',state);
       state.user = action.payload;
       state.loading = false;
       state.error = null;
@@ -39,10 +38,11 @@ export const { setUser, setLoading, setError } = userSlice.actions;
 export const login = (data) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    const response = await AxiosInstance.post('api/user/login/', data , {
+    const response = await AxiosInstance.post('api/user/login/', data, {
       headers: {
         'Content-Type': 'multipart/form-data',
-      } });
+      }
+    });
     dispatch(setUser(response.data));
 
     localStorage.setItem('token', response.data.token);

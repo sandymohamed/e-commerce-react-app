@@ -105,7 +105,7 @@ export const addCart = (data) => async (dispatch, getState) => {
         dispatch(addItem(data));
 
         const cartState = getState().cart;
-        const response = await AxiosInstance.post('/api/carts/', cartState);
+        await AxiosInstance.post('/api/carts/', cartState);
 
     } catch (error) {
         if (error.response && error.response.status === 400) {
@@ -128,7 +128,7 @@ export const removeItemFromCart = (data) => async (dispatch, getState) => {
     try {
         dispatch(removeItem(data));
 
-        const response = await AxiosInstance.delete('api/cart/');
+        await AxiosInstance.delete('api/cart/');
 
     } catch (error) {
         if (error.request) {
@@ -170,7 +170,7 @@ export const getCartDetails = (user) => async (dispatch) => {
 
 export const removeCart = () => async (dispatch) => {
     try {
-        const response = await AxiosInstance.delete('api/carts/');
+        await AxiosInstance.delete('api/carts/');
         dispatch(clearCart());
 
     } catch (error) {

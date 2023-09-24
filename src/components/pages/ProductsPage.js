@@ -34,7 +34,7 @@ const ProductsPage = () => {
 
 
 
-    }, [dispatch]);
+    }, [dispatch, setPageName]);
 
 
     return (
@@ -79,27 +79,27 @@ const ProductsPage = () => {
 
 
                     {
-                       
 
-                            error ? (<Col className='text-danger '>Error: {error}</Col>) :
+
+                        error ? (<Col className='text-danger '>Error: {error}</Col>) :
 
                             loading ? (
                                 <>
-                                  <div className="spinner-border text-primary " role="status" />
-                                  <Container className='mb-6 d-flex flex-wrap justify-content-evenly aligh-items-center'>
-                                    {[...Array(14)].map((item, index) => (
-                                      <CardSketlon h={50} w={20} key={index} className=' mb-6 ' />
-                                    )) }
-                                  </Container>
+                                    <div className="spinner-border text-primary " role="status" />
+                                    <Container className='mb-6 d-flex flex-wrap justify-content-evenly aligh-items-center'>
+                                        {[...Array(14)].map((item, index) => (
+                                            <CardSketlon h={50} w={20} key={index} className=' mb-6 ' />
+                                        ))}
+                                    </Container>
                                 </>
-                              ) :
-                               
-                                    products?.map((product) => (
-                                        <Col key={product._id} xs={6} md={4} lg={3} className='mt-2 h-50' >
-                                            <ProductCard product={product} />
-                                        </Col>
-                                    ))
-                               
+                            ) :
+
+                                products?.map((product) => (
+                                    <Col key={product._id} xs={6} md={4} lg={3} className='mt-2 h-50' >
+                                        <ProductCard product={product} />
+                                    </Col>
+                                ))
+
                     }
                 </Row>
             </Container>

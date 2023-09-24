@@ -1,4 +1,4 @@
-    import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import AxiosInstance from '../../axiosInstance';
 import { removeCart } from './cartSlice';
 // --------------------------------------------------------------------
@@ -69,7 +69,7 @@ export const orderSlice = createSlice({
 
 })
 
-const { setShihppingAddress, setPaymentResult, setPaymentMethods, setOrder, setLoading, setError } = orderSlice.actions;
+const { setShihppingAddress, setPaymentResult, setOrder, setLoading, setError } = orderSlice.actions;
 
 export const addShippingAddress = (data) => async (dispatch) => {
 
@@ -127,7 +127,7 @@ export const getOrders = () => async (dispatch) => {
 
     try {
         dispatch(setLoading());
-        const response = await AxiosInstance.get('api/order/user' )
+        const response = await AxiosInstance.get('api/order/user')
         dispatch(setOrder(response.data));
 
 
@@ -150,11 +150,11 @@ export const getOrders = () => async (dispatch) => {
 
 export const deleteOrder = (id) => async (dispatch) => {
 
-    
+
     try {
         dispatch(setLoading());
-        const response = await AxiosInstance.delete(`api/order/${id}` )
-        
+        await AxiosInstance.delete(`api/order/${id}`)
+
     } catch (error) {
         if (error.response && error.response.status === 404) {
             // Server returned an error response with data

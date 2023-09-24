@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {  useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
@@ -108,7 +108,9 @@ const ProductDetails = () => {
       });
   }
 
-  const getProductReviews = () => {
+
+
+  const getProductReviews = useCallback(() => {
 
     AxiosInstance.post('api/reviews/', { product: id })
       .then((res) => {
@@ -118,12 +120,14 @@ const ProductDetails = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  }, [id])
+
+
 
   useEffect(() => {
 
     setPageName(product?.name);
-
+    getProductReviews();
     AxiosInstance.get(`/api/products/${id}`)
       .then((response) => {
         setProduct(response.data);
@@ -132,9 +136,9 @@ const ProductDetails = () => {
         console.log(error);
       });
 
-    getProductReviews();
 
-  }, []);
+
+  }, [setPageName, id, product?.name, getProductReviews]);
 
 
   if (!product) {
@@ -215,7 +219,7 @@ const ProductDetails = () => {
                 </button>}
 
             </div>
-            <p><Rating value={review?.rating} /></p>
+            <Rating value={review?.rating} />
             <p>{review?.comment}</p>
             {
               review?.image &&

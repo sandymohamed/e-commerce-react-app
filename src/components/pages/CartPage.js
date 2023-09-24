@@ -16,7 +16,7 @@ import DynamicImage from '../DynamicImage';
 // -------------------------------------------------------------------------------------
 const CartPage = () => {
 
-  const { pageName, setPageName } = useContext(PageNameContext)
+  const { setPageName } = useContext(PageNameContext)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -85,7 +85,7 @@ const CartPage = () => {
     setPageName('Cart')
 
 
-  }, [dispatch, user]);
+  }, [dispatch, user, setPageName]);
 
 
   const renderDigits = (number) => {
@@ -109,7 +109,7 @@ const CartPage = () => {
     const token = localStorage.getItem('token')
 
     if (token) {
-      navigate('/shipping')
+      navigate('/shipping', { replace: true })
 
     } else {
       navigate('/login', { state: { from: '/checkout' } })
@@ -163,7 +163,7 @@ const CartPage = () => {
                 <Card key={item?.id} className='w-100 poppins-text d-flex flex-row m-2 box-border cart-card ' style={{ height: '20vh' }}>
 
                   <Link to={`/product/${item._id}`} className='w-25' >
-                  <DynamicImage variant="top" image={item.image} className='h-100 w-100 rounded' />
+                    <DynamicImage variant="top" image={item.image} className='h-100 w-100 rounded' />
                   </Link>
 
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {  useNavigate, useLocation    } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Container, Form, Button } from 'react-bootstrap';
 import { login, selectError, selectLoading, } from '../../redux/reducers/userSlice';
 import { TiWarningOutline } from 'react-icons/ti';
@@ -30,7 +30,7 @@ const Login = () => {
 
     const handleSignUp = () => {
         navigate('/signup', { state: { from: location } })
-      };
+    };
 
 
     const { handleSubmit, register, formState: { errors } } = useForm({
@@ -42,20 +42,20 @@ const Login = () => {
         }
     });
 
-    const onSubmit = async(data) => {
-      
-           await  dispatch(login(data)).then((res)=> {
-           if(res && !error)
-            navigate(location.state?.from || '/');
-           })
-          
-        };
+    const onSubmit = async (data) => {
+
+        await dispatch(login(data)).then((res) => {
+            if (res && !error)
+                navigate(location.state?.from || '/');
+        })
+
+    };
 
     const { setPageName } = useContext(PageNameContext);
 
     useEffect(() => {
         setPageName('Login');
-    }, []);
+    }, [setPageName]);
 
 
     return (
@@ -98,18 +98,18 @@ const Login = () => {
                 className="text-light d-block"
                 > */}
 
-            <div className='d-flex justify-content-center align-items-center'>
+                <div className='d-flex justify-content-center align-items-center'>
 
-                              <button
-                      // to={'/login'}
-                      className='d-block text-light text-decoration-underline text-center border-0 bg-transparent p-0'
-                      onClick={handleSignUp}
-                      >
-                    New Customer?
+                    <button
+                        // to={'/login'}
+                        className='d-block text-light text-decoration-underline text-center border-0 bg-transparent p-0'
+                        onClick={handleSignUp}
+                    >
+                        New Customer?
                     </button>
-                        </div>
+                </div>
                 {/* </Link> */}
-            
+
 
             </Form>
 

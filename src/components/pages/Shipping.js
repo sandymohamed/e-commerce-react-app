@@ -58,7 +58,7 @@ const Shipping = () => {
 
     const onSubmit = async (data) => {
         await dispatch(addShippingAddress(data)).then((res) => {
-            navigate('/payment')
+            navigate('/payment',  { replace: true })
             showMessage('Success✔', 'success');
         }).catch((error) => {
             showMessage(`Failed ${error}❌`, 'danger');

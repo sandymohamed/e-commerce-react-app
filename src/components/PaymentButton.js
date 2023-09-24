@@ -4,7 +4,7 @@ import {
 } from "@paypal/react-paypal-js";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder, addPaymentResult, selectPaymentMethods, selectShihppingAddress } from "../redux/reducers/orderSlice";
+import { addOrder, addPaymentResult, selectShihppingAddress } from "../redux/reducers/orderSlice";
 import { selectCartitems, selectTotal, } from "../redux/reducers/cartSlice";
 import { useNavigate } from "react-router-dom";
 // --------------------------------------------------------------------
@@ -91,7 +91,7 @@ const PaymentButton = () => {
   }
 
   const onApprove = (data, actions) => {
-    navigate('/orders');
+    navigate('/orders',   { replace: true });
 
     return actions.order.capture()
       .then(function (details) {

@@ -8,26 +8,26 @@ import { useContext, useEffect } from 'react';
 // --------------------------------------------------------------------
 
 const myTabs = [
-    {href: "profile", title: "Profile Details", active: '' , component:<ProfileDetailsPage />},
-    {href: "update-account", title: "Update Account", active: '' , component: <UpdateProfilePage /> },
- 
+  { href: "profile", title: "Profile Details", active: '', component: <ProfileDetailsPage /> },
+  { href: "update-account", title: "Update Account", active: '', component: <UpdateProfilePage /> },
+
 ]
 // --------------------------------------------------------------------
 
 
 
 export default function ProfilePage() {
-  const { pageName, setPageName } = useContext(PageNameContext);
+  const { setPageName } = useContext(PageNameContext);
 
   useEffect(() => {
 
     setPageName('Account Details')
-  }, [])
+  }, [setPageName])
   return (
     <Container>
-        <Row  className='mt-6'>
-            <Tabs myTabs={myTabs} />
-        </Row>
+      <Row className='mt-6'>
+        <Tabs myTabs={myTabs} />
+      </Row>
     </Container>
   )
 }

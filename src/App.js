@@ -1,4 +1,4 @@
-import React, { createContext, useEffect } from 'react';
+import React, { createContext, useCallback, useEffect } from 'react';
 import './App.scss';
 import Routes from './components/pages/Routes';
 import { getCartDetails } from './redux/reducers/cartSlice';
@@ -16,26 +16,31 @@ function App() {
 
   const user = useSelector(selectUser);
 
-  const updateRenderData = async() => {
-    await dispatch(fetchUserData())
-    
-    dispatch(getCartDetails(user._id))
 
-     
-  }
+  const updateRenderData = useCallback(async () => {
+
+    const token = localStorage.getItem('token');
+
+    if (token) {
+
+      await dispatch(fetchUserData());
+      dispatch(getCartDetails(user._id));
+    }
+  }, [dispatch, user._id]);
+
 
   useEffect(() => {
-    updateRenderData()
+    updateRenderData();
+  }, [updateRenderData]);
 
-   
 
-  }, []);
-  
+
+
 
   const [pageName, setPageName] = React.useState('');
 
 
-  
+
   return (
     <PageNameContext.Provider value={{ pageName, setPageName }}>
 

@@ -13,13 +13,18 @@ const OrdersPage = () => {
     const dispatch = useDispatch();
     const orders = useSelector(selectOrder);
 
-    const { pageName, setPageName } = useContext(PageNameContext);
+    const { setPageName } = useContext(PageNameContext);
 
     const [loading, setLoading] = useState(true);
 
-    const handleCancelOrder = (id) => {
+    const handleCancelOrder = async (id) => {
+        setLoading(true)
 
-        dispatch(deleteOrder(id))
+
+        await dispatch(deleteOrder(id)).then(
+            dispatch(getOrders()).then(() => setLoading(false))
+        )
+
 
     }
 
@@ -27,7 +32,7 @@ const OrdersPage = () => {
         setPageName('My Orders')
         dispatch(getOrders()).then(() => setLoading(false))
 
-    }, [loading])
+    }, [loading, dispatch, setPageName])
 
 
     return (
@@ -82,7 +87,7 @@ const OrdersPage = () => {
 
                                                         <Link to={`/product/${item._id}`} className='h-50 rounded' >
                                                             {/* <Card.Img variant="top" src={item.image} className='h-100 rounded' /> */}
-                                                            <DynamicImage image={item.image} alt={item.name} className='w-100 h-100 rounded'/>
+                                                            <DynamicImage image={item.image} alt={item.name} className='w-100 h-100 rounded' />
 
                                                         </Link>
 

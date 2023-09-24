@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -41,6 +40,8 @@ const PaymentForm = () => {
 
   const onSubmit = async (data) => {
 
+    console.log(data);
+
     await dispatch(setPaymentMethods(data.paymentOption))
 
 
@@ -62,7 +63,9 @@ const PaymentForm = () => {
 
       dispatch(addOrder(order));
 
-      navigate('/orders')
+      navigate('/orders',  { replace: true })
+      // navigate('/orders', { state: { from: '/' } })
+
     } else {
       navigate('/checkout')
 
@@ -70,13 +73,6 @@ const PaymentForm = () => {
 
 
   };
-
-
-
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <Container>

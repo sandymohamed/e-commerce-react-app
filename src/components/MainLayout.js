@@ -17,7 +17,7 @@ function MainLayout() {
 
       <Header />
 
-      <div style={{ flex: 1,marginBottom: '1rem', minHeight:'70vh',}}>
+      <div style={{ flex: 1, marginBottom: '1rem', minHeight: '70vh', }}>
         <Outlet />
       </div>
 

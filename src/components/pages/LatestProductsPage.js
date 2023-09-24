@@ -36,7 +36,7 @@ const LatestProductsPage = () => {
 
 
 
-    }, [dispatch]);
+    }, [dispatch, setPageName]);
 
 
     return (
