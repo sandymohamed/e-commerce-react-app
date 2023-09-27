@@ -123,10 +123,32 @@ const ProductDetails = () => {
   }, [id])
 
 
+  const [productName, setProductName] = useState(product?.name);
+
+  const getProductName = useCallback(() => {
+
+    const words = product?.name.split(' ');
+
+    if (product?.name.length <= 3) {
+      return product?.name;
+    }
+
+    const shortenedWords = [];
+
+    for (let i = 0; i < words?.length && shortenedWords?.length < 3; i++) {
+      shortenedWords.push(words[i]);
+    }
+
+    setProductName(shortenedWords.join(' '))
+
+    setPageName(productName)
+
+  }, [product?.name, productName, setPageName])
+
 
   useEffect(() => {
 
-    setPageName(product?.name);
+    getProductName();
     getProductReviews();
     AxiosInstance.get(`/api/products/${id}`)
       .then((response) => {
@@ -138,7 +160,7 @@ const ProductDetails = () => {
 
 
 
-  }, [setPageName, id, product?.name, getProductReviews]);
+  }, [getProductName, id, product?.name, getProductReviews]);
 
 
   if (!product) {

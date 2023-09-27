@@ -28,6 +28,24 @@ const OrdersPage = () => {
 
     }
 
+    const getProductName = (name) => {
+
+        const words = name.split(' ');
+    
+        if (name.length <= 3) {
+          return name;
+        }
+    
+        const shortenedWords = [];
+    
+        for (let i = 0; i < words?.length && shortenedWords?.length < 3; i++) {
+          shortenedWords.push(words[i]);
+        }
+    
+       return shortenedWords.join(' ')
+    
+      }
+
     useEffect(() => {
         setPageName('My Orders')
         dispatch(getOrders()).then(() => setLoading(false))
@@ -95,7 +113,7 @@ const OrdersPage = () => {
                                                             <Row>
 
                                                                 <Col xs={12} sm={8}>
-                                                                    <Card.Title align='start' className='fs-5'>{item.name}</Card.Title>
+                                                                    <Card.Title align='start' className='fs-5'>{getProductName(item.name)}</Card.Title>
                                                                 </Col>
                                                                 <Col xs={12} sm={4}>
                                                                     <Card.Text align='start' className='text-light fs-5' >{`${item?.price} $`}</Card.Text>

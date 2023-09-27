@@ -75,6 +75,30 @@ const CartPage = () => {
 
   };
 
+
+
+
+  const getProductName = (name) => {
+
+    const words = name.split(' ');
+
+    if (name.length <= 3) {
+      return name;
+    }
+
+    const shortenedWords = [];
+
+    for (let i = 0; i < words?.length && shortenedWords?.length < 3; i++) {
+      shortenedWords.push(words[i]);
+    }
+
+   return shortenedWords.join(' ')
+
+  }
+
+
+
+
   useEffect(() => {
 
     if (user) {
@@ -171,7 +195,7 @@ const CartPage = () => {
 
                     <Col xs={7} md={6} lg={8}>
 
-                      <Card.Title align='start'>{item.name}</Card.Title>
+                      <Card.Title align='start'>{getProductName(item.name)}</Card.Title>
 
                       {item.oldPrice ? <>
                         <Card.Text align='start' className='text-light fs-3 text-nowrap' > <span className='text-decoration-line-through fs-6 text-dark'> {`${item?.oldPrice} $`}</span>  {`${item?.price} $`} </Card.Text>

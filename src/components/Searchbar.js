@@ -10,11 +10,14 @@ function SearchBar() {
     const dispatch = useDispatch();
 
     const handleInputChange = (event) => {
+        console.log('ev', event);
         setSearchQuery(event.target.value);
         navigate('/products');
     };
 
     const handleSubmit = (event) => {
+        console.log('ev22', event);
+
         event.preventDefault();
         onSearch();
     };
